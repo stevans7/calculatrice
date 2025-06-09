@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto17
+    commands:
+      - echo "Installation phase - Java 17"
+
+  pre_build:
+    commands:
+      - echo "Pre-build phase - Listing source files"
+      - ls -la
+
+  build:
+    commands:
+      - echo "Build phase - Compilation en cours"
+      - javac MyCalc.java
+
+  post_build:
+    commands:
+      - echo "Build terminé. Pour exécuter : java MyCalc"
+      # Note: CodeBuild n'affiche pas d'interface graphique, donc vous ne verrez pas l'UI AWT ici.
+
+artifacts:
+  files:
+    - MyCalc.class
